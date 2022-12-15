@@ -1,5 +1,5 @@
 const tiles = [];
-const NT = 11;
+const NT = 18;
 
 const grid = [];
 const DIM = 10;
@@ -8,6 +8,7 @@ const DIM = 10;
 
 const rules = [
 	{
+		// 0
 		UP: 0,
 		RIGHT: 0,
 		DOWN: 0,
@@ -72,8 +73,52 @@ const rules = [
 		RIGHT: 0,
 		DOWN: 0,
 		LEFT: 0,
+	},
+	{
+		UP: 0,
+		RIGHT: 1,
+		DOWN: 0,
+		LEFT: 0,
+	},
+	{
+		UP: 0,
+		RIGHT: 0,
+		DOWN: 0,
+		LEFT: 1,
+	},
+	{
+		UP: 0,
+		RIGHT: 0,
+		DOWN: 0,
+		LEFT: 1,
+	},
+	{
+		UP: 0,
+		RIGHT: 1,
+		DOWN: 0,
+		LEFT: 1,
+	},
+	{
+		UP: 1,
+		RIGHT: 0,
+		DOWN: 1,
+		LEFT: 0,
+	},
+	{
+		UP: 0,
+		RIGHT: 1,
+		DOWN: 0,
+		LEFT: 0,
+	},
+	{
+		UP: 1,
+		RIGHT: 1,
+		DOWN: 1,
+		LEFT: 1,
 	},
 ];
+
+let totalOptions = [];
 
 function preload() {
 	for (let i = 0; i < NT; i++) {
@@ -85,10 +130,15 @@ function setup() {
 	// frameRate(0.5);
 	createCanvas(1080, 1080);
 
+	for (let i = 0; i < tiles.length; i++) {
+		totalOptions.push(i);
+	}
+	print(totalOptions);
+
 	for (let i = 0; i < DIM * DIM; i++) {
 		grid[i] = {
 			collapsed: false,
-			options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			options: totalOptions,
 		};
 	}
 
@@ -169,6 +219,13 @@ function draw() {
 					rect(x * w, y * h, w, h);
 				}
 			}
+		}
+	} else {
+		for (let i = 0; i < DIM * DIM; i++) {
+			grid[i] = {
+				collapsed: false,
+				options: totalOptions,
+			};
 		}
 	}
 	// console.log(grid);
