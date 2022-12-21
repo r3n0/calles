@@ -120,6 +120,7 @@ const rules = [
 
 let totalOptions = [];
 
+//volver a explicar el tema de los backtick y cómo ingresar el nuevas imágenes al sistema
 function preload() {
 	for (let i = 0; i < NT; i++) {
 		tiles[i] = loadImage(`tiles/tile${i}.png`);
